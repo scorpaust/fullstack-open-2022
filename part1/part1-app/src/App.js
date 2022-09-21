@@ -2,6 +2,7 @@ import Hello from "./Hello"
 import Footer from "./Footer"
 
 function App() {
+  
   const name = 'Peter'  
   const age = 10
   return (
