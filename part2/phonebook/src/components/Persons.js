@@ -1,9 +1,9 @@
 import Person from "./Person";
 
-const Persons = ({contactsToShow}) => {
+const Persons = ({contactsToShow, deleteFunc}) => {
     return (
         <ul>
-            {contactsToShow.map(person => <Person key={person.name} name={person.name} phoneNumber={person.number} />)}
+            {contactsToShow.map(person => <Person key={person.id} name={person.name} phoneNumber={person.number} id={person.id} remove={deleteFunc}/>)}
         </ul>
     )
 }
