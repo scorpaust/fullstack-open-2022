@@ -38,13 +38,6 @@ const App = () => {
       }
   }
 
-  const updatePerson = (id, personObject) => {
-    update(id, personObject)
-        .then(returnedPerson => {        
-          setPersons(persons.map(person => person.id !== id ? person : returnedPerson))
-        })
-  }
-
   const addPerson = (event) => {
     event.preventDefault()
     const personObject = {
