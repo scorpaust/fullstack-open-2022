@@ -3,12 +3,15 @@ import {getAll, create, remove, update } from './services/persons';
 import Filter from './components/Filter';
 import Persons from './components/Persons';
 import PersonForm from './components/PersonForm'
+import Notification from './components/Notification';
 
 const App = () => {
   const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [newFilter, setNewFilter] = useState('')
+  const [notificationMessage, setNotificationMessage] = useState('')
+  const [appError, setAppError] = useState(false)
 
   useEffect(() => {
     getAll()
@@ -33,8 +36,17 @@ const App = () => {
   const removePerson = (id, name) => {
       const confirmed = window.confirm(`Delete ${name}?`)
       if (confirmed) {
-        remove(id)
-        setPersons(persons.filter((person) => person.id !== id))
+        remove(id).then(() => {
+          setPersons(persons.filter((person) => person.id !== id))
+        }).catch(error => {
+          setAppError(true)
+          setNotificationMessage(`Information of ${name} has already been removed from server`)
+        })
+        setTimeout(() => {
+          setNotificationMessage('')
+          setAppError(false)
+          setPersons(persons.filter((person) => person.id !== id))
+        }, 5000)
       }
   }
 
@@ -70,16 +82,25 @@ const App = () => {
       create(personObject)
         .then(returnedPerson => {
           setPersons(persons.concat(returnedPerson))
+          setAppError(false)      
+          setNotificationMessage(`Added ${returnedPerson.name}`)  
           setNewName('')
+          setNewNumber('')
+          setTimeout(() => {    
+            setNotificationMessage('')
+          }, 5000)        
         })
     }
   }
 
   const contactsToShow = newFilter === '' ? persons : persons.filter(person => person.name.includes(newFilter) || person.number.includes(newFilter));
-
+ 
   return (
     <div>
       <h2>Phonebook</h2>
+      {notificationMessage !== '' &&
+        <Notification message={notificationMessage} error={appError} />
+      }
       <Filter newFilter={newFilter} handleNewFilter={handleNewFilter} />
       <h3>Add a new</h3>
       <PersonForm newName={newName} newNumber={newNumber} handleNameChange={handleNameChange} handleNumberChange={handleNumberChange} addPerson={addPerson} />
