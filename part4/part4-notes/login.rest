@@ -1,0 +1,24 @@
+post http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+    "username": "dinismcosta",
+    "password": "dinis2022!#"
+}
+
+###
+
+post http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+    "username": "dinismcosta",
+    "name": "Dinis Costa",
+    "password": "dinis2022!#"
+}
+
+###
+
+get http://localhost:3001/api/users
+
+Content-Type: application/json
