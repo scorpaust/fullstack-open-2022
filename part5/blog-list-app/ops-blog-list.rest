@@ -1,0 +1,21 @@
+POST http://localhost:3001/api/blogs/ HTTP/1.1 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRpbmlzbWNvc3RhODEiLCJpZCI6IjYzNTA2MjBmZWUzODc2MmMwNThkNGVkNSIsImlhdCI6MTY2NjIxMzU4MSwiZXhwIjoxNjY2MjE3MTgxfQ.46c2yzbgR8QA3Qo6OFQhb34Oz_8L8hfBK_pbzCOR_UE
+Content-Type: application/json
+
+{
+    "title": "Some cool first post",
+    "author": "Dinis Costa",
+    "url": "http://dinismcosta.netlify.app",
+    "likes": 130
+}
+
+###
+GET http://localhost:3003/api/blogs HTTP/1.1 
+Content-Type: application/json
+
+###
+GET http://localhost:3001/api/blogs/634496e335c92148ab149d21 HTTP/1.1
+Content-Type: application/json
+
+###
+DELETE http://localhost:3001/api/blogs/635066f5b61465932a992f47 HTTP/1.1
+Content-Type: application/json
