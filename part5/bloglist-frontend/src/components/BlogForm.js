@@ -50,7 +50,7 @@ const BlogForm = ({ addBlog }) => {
             />
           </div>
           <div className="row">
-            <button type="submit">save</button>
+            <button id="create-blog" type="submit">save</button>
           </div>
         </div>
       </form>
