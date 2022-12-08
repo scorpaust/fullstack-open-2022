@@ -1,14 +1,21 @@
-import Blog from './Blog'
+import Blog from "./Blog";
 
-const BlogList = ({ blogs }) => {
-    
-    return (
-
-        blogs.map(blog =>
-            <Blog key={blog.id} blog={blog} />
-          )
-    )
-    
-}
+const BlogList = ({ blogs, updateLikes, deleteBlog, username }) => {
+  return (
+    <div>
+      {blogs
+        .sort((a, b) => b.likes - a.likes)
+        .map((blog) => (
+          <Blog
+            key={blog.id}
+            blog={blog}
+            updateLikes={updateLikes}
+            deleteBlog={deleteBlog}
+            username={username}
+          />
+        ))}
+    </div>
+  );
+};
 
 export default BlogList;
