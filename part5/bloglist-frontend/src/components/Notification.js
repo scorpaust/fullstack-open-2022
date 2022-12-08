@@ -1,15 +1,15 @@
-import "./Notification.styles.css";
+import './Notification.styles.css'
 
 const Notification = ({ message }) => {
   if (message === null) {
-    return null;
+    return null
   }
 
-  if (message.includes("[error]")) {
-    return <div className="error">{message}</div>;
+  if (message.includes('[error]')) {
+    return <div className="error">{message}</div>
   }
 
-  return <div className="info">{message}</div>;
-};
+  return <div className="info">{message}</div>
+}
 
-export default Notification;
+export default Notification
