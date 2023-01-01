@@ -1,6 +1,6 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import BlogForm from "./BlogForm";
 import userEvent from "@testing-library/user-event";
 
@@ -20,8 +20,8 @@ test("<BlogForm /> updates parent state and calls onSubmit", async () => {
   await user.type(urlInput, "https://www.dinis-costa.com");
   await user.click(saveButton);
 
-  expect(addBlog.mock.calls).toHaveLength(1)
-  expect(addBlog.mock.calls[0][0].title).toBe("Big New Blog")
-  expect(addBlog.mock.calls[0][0].author).toBe("Dinis Costa")
-  expect(addBlog.mock.calls[0][0].url).toBe("https://www.dinis-costa.com")
-})
+  expect(addBlog.mock.calls).toHaveLength(1);
+  expect(addBlog.mock.calls[0][0].title).toBe("Big New Blog");
+  expect(addBlog.mock.calls[0][0].author).toBe("Dinis Costa");
+  expect(addBlog.mock.calls[0][0].url).toBe("https://www.dinis-costa.com");
+});
