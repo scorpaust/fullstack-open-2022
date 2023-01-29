@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { aimToVote } from "../reducers/anecdoteReducer";
+import { voteAnecdote } from "../reducers/anecdoteReducer";
 import { createNotification } from "../reducers/notificationReducer";
 
 const Anecdote = ({ anecdote }) => {
@@ -8,7 +8,7 @@ const Anecdote = ({ anecdote }) => {
 
     const voteAndNotify = async () => {
         dispatch(createNotification(`New vote for anecdote: ${anecdote.content}`, 5));
-        dispatch(aimToVote(anecdote.id))
+        dispatch(voteAnecdote(anecdote));
     }
 
     return (
